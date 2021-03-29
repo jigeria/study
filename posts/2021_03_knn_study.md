@@ -1,9 +1,9 @@
 
-> 작성자 : 박상민 - (주)인스페이스 미래기술개발부 연구원
+> 작성자 : 박상민 - (주)한컴인스페이스 미래기술개발부 연구원
 >
 > 본 포스트는 K-Nearest Neighbor 알고리즘에 대해 공부한 내용을 정리한 포스트 입니다.
 >
-> 주관적인 내용이 포함되어 있으니 이해해주시기 바랍니다.  
+> 글 내용에 수정사항이 있거나 궁금하신 사항 등은 메일보내주시면 감사하겠습니다.
 
 <br/>
 
@@ -77,12 +77,61 @@
 
 <br/>
 
-# 참고자료
+## 특징
+
+* 다양한 지도학습 알고리즘 중에서 가장 고전적이고, 직관적입니다.
+
+* 단순하고, 구현이 쉬우며 성능이 좋습니다.
+
+* 모델 훈련 시간이 필요 없습니다.
 
 <br/>
+
+
+## 구현
+
+* Python scikit-learn의 __KNeighborsClassifier__ API를 활용하면 쉽게 구현이 가능합니다.
+
+![KNN](/images/2021_03_24_knn_study_figure_7.png)
+
+</br>
+
+* 샘플 예제코드는 다음과 같습니다. [샘플 코드](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)  
+
+
+```python
+X = [[0], [1], [2], [3]]
+y = [0, 0, 1, 1]
+
+from sklearn.neighbors import KNeighborsClassifier
+neigh = KNeighborsClassifier(n_neighbors=3) # n_neighbors : Number of neighbors to use by default for kneighbors queries.
+
+neigh.fit(X, y) # Fit the k-nearest neighbors classifier from the training dataset.
+
+print(neigh.predict([[1.1]])) # Predict the class labels for the provided data.
+# [0]
+
+print(neigh.predict_proba([[0.9]])) # Return probability estimates for the test data X.
+#[[0.66666667 0.33333333]]
+
+```
+<br/>
+
+
+# 참고자료
 
 * https://john-analyst.medium.com/knn-%EC%B5%9C%EA%B7%BC%EC%A0%91-%EC%9D%B4%EC%9B%83-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-b397a0b2030e
 * https://gomguard.tistory.com/51
 * https://ko.wikipedia.org/wiki/K-%EC%B5%9C%EA%B7%BC%EC%A0%91_%EC%9D%B4%EC%9B%83_%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
 * https://needjarvis.tistory.com/454
 * https://dyndy.tistory.com/159
+
+<br/>
+
+
+# Contact Me
+
+* 이름 : 박상민  
+* 소속 : (주)한컴인스페이스 미래기술개발부  
+* 연락처 : jigeria@naver.com  
+* Github : https://github.com/jigeria  
